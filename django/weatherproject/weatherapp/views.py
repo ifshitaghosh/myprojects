@@ -39,13 +39,12 @@ def home(request):
           city = request.POST['city']
      else:
           city = 'pune'
-     #url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=458d2ddb733d57d0c64abe8b01fc29d7'
-     url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=8d7b35cd302c57bef726d09b9b993bc3'
+     url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid='
 
 
      PARAMS = {'units':'metric'}
 
-     API_KEY =  'AIzaSyCTLw9SXFN401BN7bGVBhsYmEe7vAHv22A'
+     API_KEY =  ''
      SEARCH_ENGINE_ID = 'f0d490b2a58954ce1'
      query = city + " 1920x1080"
      page = 1
