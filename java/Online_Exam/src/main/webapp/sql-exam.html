@@ -1,0 +1,358 @@
+
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>C Exam</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.quiz-container {
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+    overflow: hidden;
+    width: 600px;
+    max-width: 100%;
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgb(0, 0, 0) 100%);
+}
+
+.quiz-header {
+    padding: 4rem;
+}
+
+h2 {
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+ul li label {
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(0, 128, 255);
+    font-size: 12px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1.3rem;
+}
+
+button:hover {
+    background-color: #732d91;
+}
+
+button:focus {
+    background-color: #5e3370;
+    outline: none;
+    
+}
+#timer 
+{
+    font-family: Arial, sans-serif;
+      text-align: center;
+     
+      font-size: 2em;
+	  color: rgba(226, 235, 226, 0.993);
+    }
+</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+								
+                            <div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+		<div id="timer"></div>
+        <h2 id="question">Question text</h2>
+        <ul>
+            <li>
+                <input type="radio" id="a" name="answer" class="answer" />
+                <label id="a_text" for="a">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="b" name="answer" class="answer" />
+                <label id="b_text" for="b">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="c" name="answer" class="answer" />
+                <label id="c_text" for="c">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="d" name="answer" class="answer" />
+                <label id="d_text" for="d">Question</label>
+            </li>
+          
+        </ul>
+    </div>
+    <button id="submit">Submit</button>
+</div>
+                            <script type='text/javascript'>
+								 // Set the countdown time in minutes
+    var countdownMinutes = 40;
+
+    // Calculate the total seconds
+    var totalSeconds = countdownMinutes * 60;
+
+    // Function to update the timer
+    function updateTimer() {
+        var minutes = Math.floor(totalSeconds / 60);
+        var seconds = totalSeconds % 60;
+
+        // Display the timer in the format MM:SS
+        document.getElementById('timer').innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        // Check if the countdown is complete
+        if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById('timer').innerHTML = 'Countdown Complete!';
+        } else {
+            totalSeconds--;
+        }
+    }
+
+    // Initial call to update the timer
+    updateTimer();
+
+    // Set up an interval to update the timer every second
+    var timerInterval = setInterval(updateTimer, 1000);
+	
+const quizData = [
+{
+question: "Q1 : What does SQL stand for?",
+a: "Standard Query Language",
+b: " Structured Query Language",
+c: "System Query Language",
+d: "Sequential Query Language",
+correct: "b" },
+
+{
+question: "Q2 :Which SQL clause is used to filter the results of a query?",
+a: "GROUP BY",
+b: "HAVING",
+c: "WHERE",
+d: " ORDER BY",
+correct: "c" },
+
+{
+question: "Q3 :What is the purpose of the SELECT statement in SQL?",
+a: "To update records in a table",
+b: " To retrieve data from a database",
+c: "To delete records from a table",
+d: "To insert new records into a table",
+correct: "b" },
+
+{
+question: "Q4 : Which SQL data type is used to store variable-length character strings?",
+a: "INT",
+b: "VARCHAR",
+c: "DATE",
+d: "FLOAT",
+correct: "b" },
+{
+question: "Q5 : In SQL, which operator is used for pattern matching?",
+a: "LIKE",
+b: "BETWEEN",
+c: "IN",
+d: " IS NULL",
+correct: "a" },
+{
+question: "Q6 :What is the purpose of the GROUP BY clause in SQL?",
+a: "To filter the results of a query",
+b: "To sort the results of a query",
+c: " To group rows that have the same values in specified columns",
+d: "To join two or more tables",
+correct: "c" },
+{
+question: "Q7 :Which SQL statement is used to update data in a table?",
+a: "MODIFY",
+b: "CHANGE",
+c: "UPDATE",
+d: "ALTER",
+correct: "c" },
+{
+question: "Q8 : What is the function of the ORDER BY clause in SQL?",
+a: "To filter the results of a query",
+b: "To sort the results of a query	",
+c: " To group rows based on a condition",
+d: "To join two or more tables",
+correct: "b" },
+{
+question: "Q9 :Which SQL command is used to remove all records from a table without removing the table itself?",
+a: "DELETE",
+b: "TRUNCATE",
+c: "DROP",
+d: "REMOVE",
+correct: "b" },
+{
+question: "Q10 : Which SQL function is used to find the total number of rows in a table?",
+a: " TOTAL()",
+b: " COUNT()",
+c: " SUM()",
+d: "AVG()",
+correct: "b" },
+{
+question: "Q11 :What is the purpose of the JOIN clause in SQL?",
+a: " To filter the results of a query",
+b: " To sort the results of a query",
+c: "To combine rows from two or more tables based on a related column",
+d: " To group rows based on a condition",
+correct: "c" },
+{
+question: "Q12 : In SQL, what does the term 'NULL' represent?",
+a: " A value of zero",
+b: " A missing or undefined value",
+c: " The highest possible value",
+d: "  A value of one",
+correct: "b" },
+{
+question: "Q13 :Which of the following is a constraint in SQL that ensures that all values in a column are unique?",
+a: " PRIMARY KEY",
+b: "FOREIGN KEY",
+c: "UNIQUE",
+d: "CHECK ",
+correct: "c" },
+{
+question: "Q14 :What does the SQL statement 'SELECT DISTINCT' do?",
+a: " Selects all records from a table",
+b: " Selects only the unique values from a column",
+c: " Selects a random set of records",
+d: " Selects records based on a condition",
+correct: "b" },
+{
+question: "Q15 : Which SQL operator is used to combine rows from two or more tables based on a related column between them?",
+a: "AND	",
+b: "OR",
+c: " JOIN",
+d: "UNION",
+correct: "c" },
+{
+question: "Q16 :What is the purpose of the SQL statement 'HAVING' in a query?",
+a: "To filter the results based on a condition",
+b: "To sort the results in ascending order",
+c: "To group rows based on a condition",
+d: "To  limit the number of rows returned by a query",
+correct: "a" },
+{
+question: "Q17 : Which SQL command is used to add a new column to an existing table?",
+a: " ADD COLUMN",
+b: " ALTER TABLE",
+c: "CREATE COLUMN",
+d: "INSERT COLUMN",
+correct: "b" },
+{
+question: "Q18 :What is the purpose of the SQL aggregate function MAX()?",
+a: " To find the average value in a column",
+b: "  To find the maximum value in a column",
+c: "To find the minimum value in a column",
+d: "To count the number of rows in a table",
+correct: "b" },
+{
+question: "Q19 :Which SQL statement is used to permanently remove a table from the database?",
+a: "DELETE TABLE",
+b: "DROP TABLE",
+c: " REMOVE TABLE",
+d: "ERASE TABLE",
+correct: "b" },
+{
+question: "Q20 : What is the purpose of the SQL function 'AVG()'?",
+a: "To find the sum of values in a column",
+b: " To find the average value in a column",
+c: "To find the maximum value in a column",
+d: "To find the minimum value in a column",
+correct: "b" },
+
+];
+
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+
+const submitBtn = document.getElementById("submit");
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+deselectAnswers();
+
+const currentQuizData = quizData[currentQuiz];
+
+questionEl.innerText = currentQuizData.question;
+a_text.innerText = currentQuizData.a;
+b_text.innerText = currentQuizData.b;
+c_text.innerText = currentQuizData.c;
+d_text.innerText = currentQuizData.d;
+}
+
+function getSelected() {
+let answer = undefined;
+answerEls.forEach(answerEl => {
+if (answerEl.checked) {
+answer = answerEl.id;
+}
+});
+return answer;
+}
+
+function deselectAnswers() {
+answerEls.forEach(answerEl => {
+answerEl.checked = false;
+});
+}
+
+submitBtn.addEventListener("click", () => {
+const answer = getSelected();
+if (answer) {
+if (answer === quizData[currentQuiz].correct) {
+score++;
+}
+currentQuiz++;
+if (currentQuiz < quizData.length) { loadQuiz(); } else { quiz.innerHTML=` <h2>You answered correctly at ${score}/${quizData.length} questions.</h2>
+    <a href ="index.html"><button>Back</button></a>
+    `;
+    }
+    }
+    });</script>
+                            </body>
+                        </html>

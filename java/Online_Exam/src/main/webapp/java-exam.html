@@ -1,0 +1,358 @@
+
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Java Exam</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.quiz-container {
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+    overflow: hidden;
+    width: 600px;
+    max-width: 100%;
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgb(0, 0, 0) 100%);
+}
+
+.quiz-header {
+    padding: 4rem;
+}
+
+h2 {
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+ul li label {
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(0, 128, 255);
+    font-size: 12px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1.3rem;
+}
+
+button:hover {
+    background-color: #732d91;
+}
+
+button:focus {
+    background-color: #5e3370;
+    outline: none;
+    
+}
+#timer 
+{
+    font-family: Arial, sans-serif;
+      text-align: center;
+     
+      font-size: 2em;
+	  color: rgba(226, 235, 226, 0.993);
+    }
+</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+								
+                            <div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+		<div id="timer"></div>
+        <h2 id="question">Question text</h2>
+        <ul>
+            <li>
+                <input type="radio" id="a" name="answer" class="answer" />
+                <label id="a_text" for="a">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="b" name="answer" class="answer" />
+                <label id="b_text" for="b">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="c" name="answer" class="answer" />
+                <label id="c_text" for="c">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="d" name="answer" class="answer" />
+                <label id="d_text" for="d">Question</label>
+            </li>
+          
+        </ul>
+    </div>
+    <button id="submit">Submit</button>
+</div>
+                            <script type='text/javascript'>
+								 // Set the countdown time in minutes
+    var countdownMinutes = 40;
+
+    // Calculate the total seconds
+    var totalSeconds = countdownMinutes * 60;
+
+    // Function to update the timer
+    function updateTimer() {
+        var minutes = Math.floor(totalSeconds / 60);
+        var seconds = totalSeconds % 60;
+
+        // Display the timer in the format MM:SS
+        document.getElementById('timer').innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        // Check if the countdown is complete
+        if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById('timer').innerHTML = 'Countdown Complete!';
+        } else {
+            totalSeconds--;
+        }
+    }
+
+    // Initial call to update the timer
+    updateTimer();
+
+    // Set up an interval to update the timer every second
+    var timerInterval = setInterval(updateTimer, 1000);
+	
+const quizData = [
+{
+question: "Q1 : Which of the following is not a feature of Java?",
+a: "Dynamic",
+b: "Architecture Neutral",
+c: " Use of pointers",
+d: "Object-oriented",
+correct: "c" },
+
+{
+question: "Q2 : What is the purpose of the finalize() method in Java?",
+a: "To force garbage collection",
+b: "To clean up resources before an object is garbage collected",
+c: "To mark an object as final",
+d: "To define the final methods in a class",
+correct: "b" },
+
+{
+question: "Q3 : Which keyword is used to define a constant in Java?",
+a: "static",
+b: " final",
+c: "const",
+d: "constant",
+correct: "b" },
+
+{
+question: "Q4 :What is the purpose of the super keyword in Java?",
+a: "To refer to the superclass object",
+b: "To invoke the superclass method",
+c: "To call the superclass constructor",
+d: "All of the above",
+correct: "d" },
+{
+question: "Q5 : Which design pattern is used for creating an object in a way that the same object is returned when requested?",
+a: "Singleton",
+b: "Factory",
+c: "Builder",
+d: "Prototype",
+correct: "a" },
+{
+question: "Q6 : What is the purpose of the transient keyword in Java?",
+a: "To make a variable non-modifiable",
+b: "To exclude a variable from serialization",
+c: "To make a variable thread-safe",
+d: "To define a variable that cannot be overridden",
+correct: "b" },
+{
+question: "Q7 : Which of the following is used for handling exceptions in Java?",
+a: "try-catch",
+b: "if-else",
+c: "switch",
+d: "for",
+correct: "a" },
+{
+question: "Q8 : What is the purpose of the this keyword in Java?",
+a: "To refer to the current class instance",
+b: " To create a new object	",
+c: "To call a superclass method",
+d: "To initialize an object",
+correct: "a" },
+{
+question: "Q9 : hich collection class allows null elements in Java?",
+a: "ArrayList",
+b: "LinkedList",
+c: "HashSet",
+d: "TreeSet",
+correct: "c" },
+{
+question: "Q10 : In Java, what is the difference between an abstract class and an interface?",
+a: " Abstract class can have constructor, interface cannot",
+b: "  Interface can have methods with implementation, abstract class cannot",
+c: "Abstract class can extend multiple classes, interface cannot	",
+d: " Interface can have variables, abstract class cannot   ",
+correct: "a" },
+{
+question: "Q11 :What is the purpose of the volatile keyword in Java?",
+a: "To make a variable non-modifiable",
+b: "To exclude a variable from serialization",
+c: " To ensure visibility of changes to a variable across threads",
+d: "To define a variable that cannot be overridden",
+correct: "c" },
+{
+question: "Q12 :Which of the following is used for concurrent programming in Java?",
+a: "synchronized",
+b: "static",
+c: "final",
+d: "transient",
+correct: "a" },
+{
+question: "Q13 :What is the purpose of the enum keyword in Java?",
+a: "  To define a new class",
+b: " To define a singleton class",
+c: "To define a set of constants",
+d: "To define a method ",
+correct: "c" },
+{
+question: "Q14 :What is the purpose of the ClassLoader in Java?",
+a: " To load classes at runtime",
+b: " To define classes",
+c: " To create objects",
+d: " To handle exceptions",
+correct: "a" },
+{
+question: "Q15 :Which Java API is used for XML processing?",
+a: "Java Database Connectivity (JDBC)	",
+b: " Java Naming and Directory Interface (JNDI)",
+c: " Java API for XML Processing (JAXP)",
+d: "Java Authentication and Authorization Service (JAAS)",
+correct: "c" },
+{
+question: "Q16 :What is the purpose of the strictfp keyword in Java?",
+a: " To make a method strict",
+b: "To make a class strict",
+c: "To make a variable strict",
+d: "To ensure consistent floating-point behavior across different platforms",
+correct: "d" },
+{
+question: "Q17 : Which Java feature is used for converting one data type to another?",
+a: " Casting",
+b: " Inheritance",
+c: "Polymorphism",
+d: "Encapsulation",
+correct: "a" },
+{
+question: "Q18 :What is the purpose of the @Override annotation in Java?",
+a: "  To override a superclass method",
+b: "  To define a new method	",
+c: "To mark a method as final",
+d: " To create an instance of a class",
+correct: "a" },
+{
+question: "Q19 :Which of the following is a Java framework for building web applications?",
+a: "JavaFX",
+b: "Spring",
+c: " Hibernate",
+d: "Java Swing",
+correct: "b" },
+{
+question: "Q20 : What is the purpose of the Lambda expression in Java?",
+a: "To define anonymous classes",
+b: " To create threads",
+c: "To implement functional interfaces concisely",
+d: "To handle exceptions",
+correct: "c" },
+
+];
+
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+
+const submitBtn = document.getElementById("submit");
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+deselectAnswers();
+
+const currentQuizData = quizData[currentQuiz];
+
+questionEl.innerText = currentQuizData.question;
+a_text.innerText = currentQuizData.a;
+b_text.innerText = currentQuizData.b;
+c_text.innerText = currentQuizData.c;
+d_text.innerText = currentQuizData.d;
+}
+
+function getSelected() {
+let answer = undefined;
+answerEls.forEach(answerEl => {
+if (answerEl.checked) {
+answer = answerEl.id;
+}
+});
+return answer;
+}
+
+function deselectAnswers() {
+answerEls.forEach(answerEl => {
+answerEl.checked = false;
+});
+}
+
+submitBtn.addEventListener("click", () => {
+const answer = getSelected();
+if (answer) {
+if (answer === quizData[currentQuiz].correct) {
+score++;
+}
+currentQuiz++;
+if (currentQuiz < quizData.length) { loadQuiz(); } else { quiz.innerHTML=` <h2>You answered correctly at ${score}/${quizData.length} questions.</h2>
+    <a href ="index.html"><button>Back</button></a>
+    `;
+    }
+    }
+    });</script>
+                            </body>
+                        </html>

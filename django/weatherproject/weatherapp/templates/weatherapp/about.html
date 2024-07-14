@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Website About Us Page HTML CSS</title>
+    <link rel="stylesheet" href="{% static 'about.css' %}">
+  </head>
+  <body>
+    <div class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+      </div>
+    <section class="about-us">
+      <div class="about">
+        <img src="{% static 'techno.jpg' %}" class="pic" />
+        <div class="text">
+          <h2>About Us</h2>
+          <!-- <h5>Front-end Developer & <span>Designer</span></h5> -->
+          <p>Welcome to Weather App, your go-to source for real-time weather information across the globe. Our mission is to provide accurate and up-to-date weather forecasts for cities worldwide, helping you plan your day and stay informed about current weather conditions.</p>
+        <p>Developed by Ifshita Ghosh, Tanuja Banerjee, and Ankita Saha as part of their final year project at Techno India University, this website leverages Django framework and OpenWeatherMap API to fetch live weather data. Whether you're planning a trip, checking the weather in your hometown, or just curious about global weather patterns, Weather App is here to help.</p>
+        <p>Feel free to explore our site, search for weather updates in your favorite cities, and don't forget to send us your feedback through the Contact Us page.</p><div class="data">
+            <!-- <a href="#" class="hire">Hire Me</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+        <div class="container">
+          <div class="footer-top">
+            <div class="footer-section contact">
+              <h3>Contact Us</h3>
+              <ul>
+                <li>Email: djangoweatherapp@gmail.com</li>
+                <li>Phone: +91 7002097576</li>
+                <li>Address: Newtown,Kolkata, WestBengal</li>
+              </ul>
+            </div>
+            <div class="footer-section social">
+              <h3>Follow Us</h3>
+              <div class="social-links">
+                <a href="#"><img src="{% static 'facebook.png' %}" alt="Facebook"></a>
+                <a href="#"><img src="{% static 'X.png' %}" alt="X"></a>
+                <a href="#"><img src="{% static 'instagram.png' %}" alt="Instagram"></a>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="footer-bottom">
+            <p>&copy; 2024 Weather App. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+      
+      
+  </body>
+</html>

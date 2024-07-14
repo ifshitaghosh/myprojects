@@ -1,0 +1,358 @@
+
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>C Exam</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.quiz-container {
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+    overflow: hidden;
+    width: 600px;
+    max-width: 100%;
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgb(0, 0, 0) 100%);
+}
+
+.quiz-header {
+    padding: 4rem;
+}
+
+h2 {
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+ul li label {
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(0, 128, 255);
+    font-size: 12px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1.3rem;
+}
+
+button:hover {
+    background-color: #732d91;
+}
+
+button:focus {
+    background-color: #5e3370;
+    outline: none;
+    
+}
+#timer 
+{
+    font-family: Arial, sans-serif;
+      text-align: center;
+     
+      font-size: 2em;
+	  color: rgba(226, 235, 226, 0.993);
+    }
+</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+								
+                            <div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+		<div id="timer"></div>
+        <h2 id="question">Question text</h2>
+        <ul>
+            <li>
+                <input type="radio" id="a" name="answer" class="answer" />
+                <label id="a_text" for="a">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="b" name="answer" class="answer" />
+                <label id="b_text" for="b">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="c" name="answer" class="answer" />
+                <label id="c_text" for="c">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="d" name="answer" class="answer" />
+                <label id="d_text" for="d">Question</label>
+            </li>
+          
+        </ul>
+    </div>
+    <button id="submit">Submit</button>
+</div>
+                            <script type='text/javascript'>
+								 // Set the countdown time in minutes
+    var countdownMinutes = 40;
+
+    // Calculate the total seconds
+    var totalSeconds = countdownMinutes * 60;
+
+    // Function to update the timer
+    function updateTimer() {
+        var minutes = Math.floor(totalSeconds / 60);
+        var seconds = totalSeconds % 60;
+
+        // Display the timer in the format MM:SS
+        document.getElementById('timer').innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        // Check if the countdown is complete
+        if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById('timer').innerHTML = 'Countdown Complete!';
+        } else {
+            totalSeconds--;
+        }
+    }
+
+    // Initial call to update the timer
+    updateTimer();
+
+    // Set up an interval to update the timer every second
+    var timerInterval = setInterval(updateTimer, 1000);
+	
+const quizData = [
+{
+question: "Q1 : What is the time complexity of inserting an element into the middle of a singly linked list?",
+a: "O(1)",
+b: "O(log n)",
+c: " O(n)",
+d: "O(n^2)",
+correct: "c" },
+
+{
+question: "Q2 :Which data structure is best suited for implementing a stack?",
+a: "Linked List",
+b: "Array",
+c: "Tree",
+d: "Hash Table",
+correct: "b" },
+
+{
+question: "Q3 : What is the purpose of the binary search algorithm?",
+a: " Sorting a list of elements",
+b: "  Searching for an element in a sorted list",
+c: "Finding the maximum element in a list",
+d: " Reversing a list",
+correct: "b" },
+
+{
+question: "Q4 :In which data structure is the LIFO (Last In, First Out) order implemented?",
+a: "Queue",
+b: " Linked List	",
+c: "Stack",
+d: "Tree",
+correct: "c" },
+{
+question: "Q5 : What is the worst-case time complexity of the quicksort algorithm?",
+a: " O(n)",
+b: " O(n log n)",
+c: "O(n^2)",
+d: "O(log n)",
+correct: "c" },
+{
+question: "Q6 :Which algorithm is used for finding the shortest path in a weighted graph?",
+a: " Depth-First Search (DFS)",
+b: "Breadth-First Search (BFS)",
+c: " Dijkstra's Algorithm",
+d: " Bellman-Ford Algorithm",
+correct: "c" },
+{
+question: "Q7 : What is the primary purpose of a hash function in data structures?",
+a: "To sort elements",
+b: "To map data to a fixed-size array",
+c: "swiTo create a balanced treetch",
+d: "To reverse a linked list",
+correct: "b" },
+{
+question: "Q8 :Which of the following is not a searching algorithm?",
+a: "Linear Search",
+b: "Binary Search",
+c: " Bubble Sort",
+d: " Interpolation Search",
+correct: "c" },
+{
+question: "Q9 : What is the time complexity of the merge sort algorithm?",
+a: " O(n)",
+b: " O(n log n)",
+c: " O(n^2)",
+d: "O(log n)",
+correct: "b" },
+{
+question: "Q10 : In the context of data structures, what is a priority queue?",
+a: "A queue with a fixed size",
+b: " A queue with elements sorted by priority",
+c: " A stack with constant time pop operation",
+d: "A queue with a constant time enqueue operation",
+correct: "a" },
+{
+question: "Q11 :Which data structure is used for implementing breadth-first search (BFS) in a graph?",
+a: "Stack",
+b: "Queue",
+c: "Heap",
+d: " Linked List",
+correct: "b" },
+{
+question: "Q12 :What is the primary advantage of a binary search tree over a regular binary tree?",
+a: "Faster search operations",
+b: " Simplicity in implementation",
+c: " Smaller memory footprint",
+d: "More efficient insertion operations",
+correct: "a" },
+{
+question: "Q13 :Which sorting algorithm has the best average-case time complexity?",
+a: "  Bubble Sort",
+b: " Insertion Sort",
+c: " Quick Sort",
+d: "Merge Sort ",
+correct: "d" },
+{
+question: "Q14 : What is the time complexity of the best sorting algorithm for a linked list?",
+a: " O(n^2)",
+b: " O(log n)",
+c: "  O(n log n)",
+d: "  O(n)",
+correct: "d" },
+{
+question: "Q15 : Which data structure is suitable for implementing a recursive algorithm?",
+a: "Stack",
+b: " Queue",
+c: "Array",
+d: " Linked List",
+correct: "a" },
+{
+question: "Q16 : What is the primary purpose of the Floyd-Warshall algorithm?",
+a: " Finding the shortest path in a weighted graph",
+b: "Detecting cycles in a graph",
+c: " Searching for an element in an array",
+d: "All-pairs shortest path in a weighted graph",
+correct: "d" },
+{
+question: "Q17 : Which of the following is a dynamic programming technique used to optimize recursive algorithms?",
+a: " Divide and Conquer",
+b: " Greedy Algorithm",
+c: "Backtracking",
+d: "Memoization",
+correct: "d" },
+{
+question: "Q18 : What is the purpose of the Topological Sort algorithm?",
+a: "  Finding the shortest path in a weighted graph",
+b: "  Sorting vertices in a directed acyclic graph (DAG)	",
+c: " Searching for an element in a linked list",
+d: "  Traversing a binary tree in level order",
+correct: "b" },
+{
+question: "Q19 :Which of the following is a comparison-based sorting algorithm?",
+a: "Counting Sort",
+b: "Radix Sort",
+c: " Heap Sort",
+d: " Bucket Sort",
+correct: "c" },
+{
+question: "Q20 : What is the purpose of the Knapsack Problem in algorithmic optimization?",
+a: "Finding the longest common subsequence",
+b: " Optimal scheduling of tasks",
+c: "Allocating resources to maximize value within constraints",
+d: "Sorting elements in non-decreasing order",
+correct: "c" },
+
+];
+
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+
+const submitBtn = document.getElementById("submit");
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+deselectAnswers();
+
+const currentQuizData = quizData[currentQuiz];
+
+questionEl.innerText = currentQuizData.question;
+a_text.innerText = currentQuizData.a;
+b_text.innerText = currentQuizData.b;
+c_text.innerText = currentQuizData.c;
+d_text.innerText = currentQuizData.d;
+}
+
+function getSelected() {
+let answer = undefined;
+answerEls.forEach(answerEl => {
+if (answerEl.checked) {
+answer = answerEl.id;
+}
+});
+return answer;
+}
+
+function deselectAnswers() {
+answerEls.forEach(answerEl => {
+answerEl.checked = false;
+});
+}
+
+submitBtn.addEventListener("click", () => {
+const answer = getSelected();
+if (answer) {
+if (answer === quizData[currentQuiz].correct) {
+score++;
+}
+currentQuiz++;
+if (currentQuiz < quizData.length) { loadQuiz(); } else { quiz.innerHTML=` <h2>You answered correctly at ${score}/${quizData.length} questions.</h2>
+    <a href ="index.html"><button>Back</button></a>
+    `;
+    }
+    }
+    });</script>
+                            </body>
+                        </html>

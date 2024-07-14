@@ -1,0 +1,358 @@
+
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>C Exam</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.quiz-container {
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+    overflow: hidden;
+    width: 600px;
+    max-width: 100%;
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgb(0, 0, 0) 100%);
+}
+
+.quiz-header {
+    padding: 4rem;
+}
+
+h2 {
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+ul li label {
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(0, 128, 255);
+    font-size: 12px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1.3rem;
+}
+
+button:hover {
+    background-color: #732d91;
+}
+
+button:focus {
+    background-color: #5e3370;
+    outline: none;
+    
+}
+#timer 
+{
+    font-family: Arial, sans-serif;
+      text-align: center;
+     
+      font-size: 2em;
+	  color: rgba(226, 235, 226, 0.993);
+    }
+</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+								
+                            <div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+		<div id="timer"></div>
+        <h2 id="question">Question text</h2>
+        <ul>
+            <li>
+                <input type="radio" id="a" name="answer" class="answer" />
+                <label id="a_text" for="a">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="b" name="answer" class="answer" />
+                <label id="b_text" for="b">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="c" name="answer" class="answer" />
+                <label id="c_text" for="c">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="d" name="answer" class="answer" />
+                <label id="d_text" for="d">Question</label>
+            </li>
+          
+        </ul>
+    </div>
+    <button id="submit">Submit</button>
+</div>
+                            <script type='text/javascript'>
+								 // Set the countdown time in minutes
+    var countdownMinutes = 40;
+
+    // Calculate the total seconds
+    var totalSeconds = countdownMinutes * 60;
+
+    // Function to update the timer
+    function updateTimer() {
+        var minutes = Math.floor(totalSeconds / 60);
+        var seconds = totalSeconds % 60;
+
+        // Display the timer in the format MM:SS
+        document.getElementById('timer').innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        // Check if the countdown is complete
+        if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById('timer').innerHTML = 'Countdown Complete!';
+        } else {
+            totalSeconds--;
+        }
+    }
+
+    // Initial call to update the timer
+    updateTimer();
+
+    // Set up an interval to update the timer every second
+    var timerInterval = setInterval(updateTimer, 1000);
+	
+const quizData = [
+{
+question: "Q1 : What is the primary purpose of a blockchain?",
+a: "Data encryption",
+b: "Decentralized consensus",
+c: "Centralized control",
+d: " Data compression",
+correct: "b" },
+
+{
+question: "Q2 : What is a smart contract in the context of blockchain?",
+a: " A contract signed by multiple parties",
+b: "A self-executing contract with the terms of the agreement directly written into code",
+c: "A legal contract stored on a blockchain",
+d: "A contract that is managed by a central authority",
+correct: "b" },
+
+{
+question: "Q3 : Which cryptocurrency was the first to use a blockchain?",
+a: "Bitcoin",
+b: "Ethereum",
+c: "Ripple",
+d: "Litecoin)",
+correct: "a" },
+
+{
+question: "Q4 : Which consensus algorithm is used in Bitcoin?",
+a: "Proof of Stake (PoS)",
+b: "Proof of Work (PoW)",
+c: "Delegated Proof of Stake (DPoS)",
+d: " Practical Byzantine Fault Tolerance (PBFT)",
+correct: "b" },
+{
+question: "Q5 : What is the purpose of a private key in blockchain cryptography?",
+a: " To encrypt data",
+b: " To decrypt data",
+c: " To sign transactions and prove ownership",
+d: " To validate consensus",
+correct: "c" },
+{
+question: "Q6 : Which blockchain feature allows users to view, but not modify, historical records?",
+a: "Immutability",
+b: "Anonymity",
+c: "Scalability",
+d: "Transparency",
+correct: "a" },
+{
+question: "Q7 : What is the role of nodes in a blockchain network?",
+a: "Validate transactions and maintain the network",
+b: "Create new cryptocurrencies",
+c: " Execute smart contracts",
+d: " Mine new blocks",
+correct: "a" },
+{
+question: "Q8 : Which term refers to the process of adding new blocks to the blockchain?",
+a: "Mining",
+b: "Staking	",
+c: "Hashing",
+d: "Confirming",
+correct: "d" },
+{
+question: "Q9 :What is a 51% attack in the context of blockchain?",
+a: "A majority of nodes colluding to control the network",
+b: "A type of consensus algorithm",
+c: " A method of encrypting data",
+d: " A smart contract vulnerability",
+correct: "a" },
+{
+question: "Q10 : What does the term 'fork' mean in the context of blockchain?",
+a: "Splitting of a blockchain into two separate chains",
+b: "Adding new nodes to the network",
+c: "Encrypting data using a cryptographic key",
+d: "Executing a smart contract",
+correct: "a" },
+{
+question: "Q11 : Which blockchain is known for its focus on supporting smart contracts and decentralized applications (DApps)?",
+a: " Bitcoin",
+b: " Ethereum",
+c: "Ripple",
+d: "Litecoin",
+correct: "b" },
+{
+question: "Q12 : What is a Merkle Tree used for in a blockchain?",
+a: " Ensuring data integrity in each block",
+b: " Generating cryptographic keys",
+c: " Mining new blocks",
+d: " Encrypting transaction data",
+correct: "a" },
+{
+question: "Q13 :Which blockchain consensus algorithm aims to achieve consensus without the need for mining??",
+a: "Proof of Work (PoW)",
+b: "Proof of Stake (PoS)",
+c: " Delegated Proof of Stake (DPoS)",
+d: " Byzantine Fault Tolerance (BFT)",
+correct: "b" },
+{
+question: "Q14 : What is a 'double-spending' problem in the context of cryptocurrencies?",
+a: " Spending the same amount of money twice",
+b: "Spending money on two different items",
+c: "Spending money in a decentralized manner",
+d: "Spending money without using a blockchain",
+correct: "a" },
+{
+question: "Q15 : Which term is used to describe the process of validating and verifying transactions in a blockchain?",
+a: "Confirming",
+b: "Mining",
+c: " Staking",
+d: "Hashing",
+correct: "b" },
+{
+question: "Q16 : What is the purpose of a public key in blockchain cryptography?",
+a: " To sign transactions",
+b: "To decrypt data",
+c: "To encrypt data",
+d: "To validate consensus",
+correct: "c" },
+{
+question: "Q17 : In blockchain, what is a 'permissioned' or 'private' blockchain?",
+a: "  A blockchain with no access controls",
+b: "  A blockchain with open access to anyone",
+c: "A blockchain where access is restricted to a specific group of participants",
+d: "A blockchain without encryption",
+correct: "c" },
+{
+question: "Q18 : What is the purpose of the nonce in the Proof of Work (PoW) consensus algorithm?",
+a: "To sign transactions",
+b: "  To encrypt data",
+c: "To add randomness to the hash calculation",
+d: "To validate consensus",
+correct: "c" },
+{
+question: "Q19 : Which blockchain characteristic ensures that transactions cannot be altered or deleted?",
+a: "Anonymity",
+b: "Immutability",
+c: "Scalability",
+d: "Consensus",
+correct: "b" },
+{
+question: "Q20 : What is the primary purpose of a decentralized exchange (DEX) in the blockchain ecosystem?",
+a: "To centralize cryptocurrency trading",
+b: "To facilitate peer-to-peer trading without intermediaries",
+c: "To mine new blocks in a blockchain",
+d: " To store private keys securely",
+correct: "b" },
+
+];
+
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+
+const submitBtn = document.getElementById("submit");
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+deselectAnswers();
+
+const currentQuizData = quizData[currentQuiz];
+
+questionEl.innerText = currentQuizData.question;
+a_text.innerText = currentQuizData.a;
+b_text.innerText = currentQuizData.b;
+c_text.innerText = currentQuizData.c;
+d_text.innerText = currentQuizData.d;
+}
+
+function getSelected() {
+let answer = undefined;
+answerEls.forEach(answerEl => {
+if (answerEl.checked) {
+answer = answerEl.id;
+}
+});
+return answer;
+}
+
+function deselectAnswers() {
+answerEls.forEach(answerEl => {
+answerEl.checked = false;
+});
+}
+
+submitBtn.addEventListener("click", () => {
+const answer = getSelected();
+if (answer) {
+if (answer === quizData[currentQuiz].correct) {
+score++;
+}
+currentQuiz++;
+if (currentQuiz < quizData.length) { loadQuiz(); } else { quiz.innerHTML=` <h2>You answered correctly at ${score}/${quizData.length} questions.</h2>
+    <a href ="index.html"><button>Back</button></a>
+    `;
+    }
+    }
+    });</script>
+                            </body>
+                        </html>
